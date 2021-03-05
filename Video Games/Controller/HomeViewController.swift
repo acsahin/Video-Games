@@ -11,6 +11,11 @@ class HomeViewController: UIViewController{
     
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var container: UIView!
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    var collectionData = [VideoGame]()
+    
+    let network = APINetwork()
     
     var pages = [UIViewController]()
     var pageCount: Int = 3
@@ -22,6 +27,21 @@ class HomeViewController: UIViewController{
         super.viewDidLoad()
         view.backgroundColor = .cyan
         
+        network.delegate = self
+        
+        collectionView.dataSource = self
+        collectionView.delegate = self
+                
+        self.collectionView.register(UINib.init(nibName: "VideoGameCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "videoGameCell")
+        
+        
+        pageControllerInit()
+        
+        //pageControl.isHidden = true
+        //container.isHidden = true
+    }
+    
+    func pageControllerInit() {
         for i in 0 ..< pageCount {
             if let vc = self.storyboard?.instantiateViewController(withIdentifier: "PageContentViewController") as? PageContentViewController {
                 vc.index = i
@@ -34,19 +54,11 @@ class HomeViewController: UIViewController{
         pageViewController!.setViewControllers([pages[0]], direction: .forward, animated: true, completion: nil)
         pageControl.numberOfPages = pageCount
     }
-    
-    @IBAction func pageControlValueChanged(_ sender: UIPageControl) {
-        if sender.currentPage > currentIndex {
-            pageViewController!.setViewControllers([pages[sender.currentPage]], direction: .forward, animated: true, completion: nil)
-        } else {
-            pageViewController!.setViewControllers([pages[sender.currentPage]], direction: .reverse, animated: true, completion: nil)
-        }
-        currentIndex = sender.currentPage
-    }
 }
 
+
+//PageView extension
 extension HomeViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
-    
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         let currentIndex = pages.firstIndex(of: viewController)!
         if currentIndex == pages.count - 1 {
@@ -75,6 +87,38 @@ extension HomeViewController: UIPageViewControllerDataSource, UIPageViewControll
                 currentIndex = pendingIndex
                 pageControl.currentPage = currentIndex
             }
+        }
+    }
+}
+
+
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return collectionData.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "videoGameCell", for: indexPath) as! VideoGameCollectionViewCell
+        cell.label.text = collectionData[indexPath.row].name
+        cell.imageView.image = UIImage(named: "2")
+        cell.ratingLabel.text = String(collectionData[indexPath.row].rating)
+        cell.dateLabel.text = collectionData[indexPath.row].released
+        
+        print(collectionData[indexPath.row].name)
+        
+        cell.backgroundColor = .black
+        cell.layer.cornerRadius = 20
+        cell.layer.masksToBounds = true
+        
+        return cell
+    }
+}
+
+extension HomeViewController: APINetworkDelegate {
+    func didUpdateVideoGames(_ apiNetwork: APINetwork, videoGames: [VideoGame]) {
+        DispatchQueue.main.async {
+            self.collectionData = videoGames
+            self.collectionView.reloadData()
         }
     }
     
