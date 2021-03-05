@@ -6,12 +6,16 @@
 //
 
 import UIKit
+import Kingfisher
 
 class HomeViewController: UIViewController{
     
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var container: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var searchText: UITextField!
     
     var collectionData = [VideoGame]()
     
@@ -25,8 +29,6 @@ class HomeViewController: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .cyan
-        
         network.delegate = self
         
         collectionView.dataSource = self
@@ -35,16 +37,17 @@ class HomeViewController: UIViewController{
         self.collectionView.register(UINib.init(nibName: "VideoGameCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "videoGameCell")
         
         
-        pageControllerInit()
+        pageControl.pageIndicatorTintColor = .darkGray
+        pageControl.currentPageIndicatorTintColor = .black
         
         //pageControl.isHidden = true
         //container.isHidden = true
     }
     
-    func pageControllerInit() {
+    func pageControllerInit(videoGameList: [VideoGame]) {
         for i in 0 ..< pageCount {
             if let vc = self.storyboard?.instantiateViewController(withIdentifier: "PageContentViewController") as? PageContentViewController {
-                vc.index = i
+                vc.videoGame = videoGameList[i]
                 pages.append(vc)
             }
         }
@@ -53,6 +56,25 @@ class HomeViewController: UIViewController{
         pageViewController!.dataSource = self
         pageViewController!.setViewControllers([pages[0]], direction: .forward, animated: true, completion: nil)
         pageControl.numberOfPages = pageCount
+    }
+    
+//TextField value
+    @IBAction func searchTextChanged(_ sender: UITextField) {
+        if let text = sender.text {
+            if text.count >= 4 {
+                stackView.isHidden = true
+                collectionData = network.baseData.filter{
+                    $0.name.lowercased().contains(text)
+                }
+                collectionView.reloadData()
+            }else {
+                container.isHidden = false
+                pageControl.isHidden = false
+            }
+        } else {
+            container.isHidden = false
+            pageControl.isHidden = false
+        }
     }
 }
 
@@ -81,6 +103,8 @@ extension HomeViewController: UIPageViewControllerDataSource, UIPageViewControll
         pendingIndex = pages.firstIndex(of: pendingViewControllers.first!)
     }
     
+    
+    
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if completed {
             if let pendingIndex = pendingIndex {
@@ -92,6 +116,7 @@ extension HomeViewController: UIPageViewControllerDataSource, UIPageViewControll
 }
 
 
+//Collection View
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collectionData.count
@@ -99,8 +124,10 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "videoGameCell", for: indexPath) as! VideoGameCollectionViewCell
+        
         cell.label.text = collectionData[indexPath.row].name
-        cell.imageView.image = UIImage(named: "2")
+        cell.imageView.kf.indicatorType = .activity
+        cell.imageView.kf.setImage(with: URL(string: collectionData[indexPath.row].background_image))
         cell.ratingLabel.text = String(collectionData[indexPath.row].rating)
         cell.dateLabel.text = collectionData[indexPath.row].released
         
@@ -108,18 +135,26 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         cell.backgroundColor = .black
         cell.layer.cornerRadius = 20
-        cell.layer.masksToBounds = true
+        
+        cell.layer.shadowColor = UIColor.darkGray.cgColor
+        cell.layer.shadowOpacity = 1
+        cell.layer.shadowOffset = CGSize(width: -5, height: -5)
+        cell.layer.shadowRadius = 5
+        
+        cell.layer.masksToBounds = false
         
         return cell
     }
 }
 
+
+//Notify CollectionData Changes -Delegate
 extension HomeViewController: APINetworkDelegate {
     func didUpdateVideoGames(_ apiNetwork: APINetwork, videoGames: [VideoGame]) {
         DispatchQueue.main.async {
-            self.collectionData = videoGames
+            self.pageControllerInit(videoGameList: Array(videoGames[0..<self.pageCount]))
+            self.collectionData = Array(videoGames[self.pageCount..<videoGames.count])
             self.collectionView.reloadData()
         }
     }
-    
 }

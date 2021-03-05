@@ -6,19 +6,22 @@
 //
 
 import UIKit
+import Kingfisher
 
 class PageContentViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
     
-    var index: Int = 0
+    var videoGame = VideoGame(slug: "", name: "", released: "", background_image: "", rating: 0.0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageView.image = UIImage(named: String(index))
-
-        self.view.layer.cornerRadius = 20
-        self.view.layer.masksToBounds = true
+        
+        imageView.kf.indicatorType = .activity
+        imageView.kf.setImage(with: URL(string: videoGame.background_image))
+        
+        imageView.layer.cornerRadius = 20
+        imageView.layer.masksToBounds = false
   
     }
 }

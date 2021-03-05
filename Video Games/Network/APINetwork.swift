@@ -11,6 +11,8 @@ class APINetwork {
     
     var delegate: APINetworkDelegate?
     
+    var baseData = [VideoGame]()
+    
     let headers = [
         "x-rapidapi-key": "4d9031962fmshbd0f94c9fc9a412p17f8d5jsn3522866d1391",
         "x-rapidapi-host": "rawg-video-games-database.p.rapidapi.com"
@@ -35,6 +37,7 @@ class APINetwork {
                 if let safeData = data {
                     do {
                         let videoGameList = try decoder.decode(VideoGameList.self, from: safeData)
+                        self.baseData = videoGameList.results
                         self.delegate?.didUpdateVideoGames(self, videoGames: videoGameList.results)
                     } catch {
                         print("Error loading")

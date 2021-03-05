@@ -12,34 +12,33 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="videoGameCell" id="gTV-IL-0wX" customClass="VideoGameCollectionViewCell" customModule="Video_Games" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+            <rect key="frame" x="0.0" y="0.0" width="394" height="100"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                <rect key="frame" x="0.0" y="0.0" width="394" height="100"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7yV-yk-f8W">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                        <rect key="frame" x="0.0" y="0.0" width="394" height="100"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2" translatesAutoresizingMaskIntoConstraints="NO" id="CuQ-Cb-aWi">
                                 <rect key="frame" x="0.0" y="0.0" width="150" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="7v1-Q9-lw8"/>
-                                    <constraint firstAttribute="height" constant="100" id="WEN-S1-lUQ"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="ZkS-Um-MEd">
-                                <rect key="frame" x="160" y="10" width="244" height="80"/>
+                                <rect key="frame" x="160" y="10" width="224" height="80"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pJp-QV-nkO">
-                                        <rect key="frame" x="0.0" y="0.0" width="244" height="44"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pJp-QV-nkO">
+                                        <rect key="frame" x="0.0" y="0.0" width="224" height="44"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="lyR-BK-4mK">
-                                        <rect key="frame" x="0.0" y="50" width="244" height="30"/>
+                                        <rect key="frame" x="0.0" y="50" width="224" height="30"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mMn-rV-WwX">
                                                 <rect key="frame" x="0.0" y="0.0" width="101" height="30"/>
@@ -66,14 +65,21 @@
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nWU-kl-cHc">
-                                                <rect key="frame" x="109" y="0.0" width="135" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
-                                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                <rect key="frame" x="109" y="0.0" width="115" height="30"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                <color key="textColor" systemColor="secondarySystemBackgroundColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="lyR-BK-4mK" firstAttribute="top" secondItem="pJp-QV-nkO" secondAttribute="bottom" constant="6" id="1FT-U3-KIl"/>
+                                    <constraint firstAttribute="trailing" secondItem="pJp-QV-nkO" secondAttribute="trailing" id="GFo-qM-JUz"/>
+                                    <constraint firstAttribute="trailing" secondItem="pJp-QV-nkO" secondAttribute="trailing" id="Mgo-mF-8ao"/>
+                                    <constraint firstItem="pJp-QV-nkO" firstAttribute="leading" secondItem="ZkS-Um-MEd" secondAttribute="leading" id="ZRJ-Bj-mjv"/>
+                                    <constraint firstItem="pJp-QV-nkO" firstAttribute="top" secondItem="ZkS-Um-MEd" secondAttribute="top" id="kYI-BC-Jhd"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <constraints>
@@ -95,21 +101,21 @@
                 <constraint firstAttribute="bottom" secondItem="7yV-yk-f8W" secondAttribute="bottom" id="OWf-Yy-5kg"/>
                 <constraint firstItem="7yV-yk-f8W" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="baq-5C-hMp"/>
             </constraints>
-            <size key="customSize" width="414" height="100"/>
+            <size key="customSize" width="394" height="100"/>
             <connections>
                 <outlet property="dateLabel" destination="nWU-kl-cHc" id="gQt-EH-afE"/>
                 <outlet property="imageView" destination="CuQ-Cb-aWi" id="jXv-Rb-EU6"/>
                 <outlet property="label" destination="pJp-QV-nkO" id="GXR-b3-re6"/>
                 <outlet property="ratingLabel" destination="zsq-Fh-6aW" id="n79-fl-kQa"/>
             </connections>
-            <point key="canvasLocation" x="-8.6956521739130448" y="132.58928571428572"/>
+            <point key="canvasLocation" x="-23.188405797101453" y="132.58928571428572"/>
         </collectionViewCell>
     </objects>
     <resources>
         <image name="2" width="600" height="750"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
-        <systemColor name="secondaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
