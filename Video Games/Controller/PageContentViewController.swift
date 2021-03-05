@@ -20,8 +20,7 @@ class PageContentViewController: UIViewController {
         imageView.kf.indicatorType = .activity
         imageView.kf.setImage(with: URL(string: videoGame.background_image))
         
-        imageView.layer.cornerRadius = 20
-        imageView.layer.masksToBounds = false
-  
+//        imageView.layer.cornerRadius = 20
+//        imageView.layer.masksToBounds = false
     }
 }

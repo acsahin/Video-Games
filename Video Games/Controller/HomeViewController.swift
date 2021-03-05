@@ -33,15 +33,13 @@ class HomeViewController: UIViewController{
         
         collectionView.dataSource = self
         collectionView.delegate = self
+        
+        searchText.delegate = self
                 
         self.collectionView.register(UINib.init(nibName: "VideoGameCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "videoGameCell")
         
-        
         pageControl.pageIndicatorTintColor = .darkGray
         pageControl.currentPageIndicatorTintColor = .black
-        
-        //pageControl.isHidden = true
-        //container.isHidden = true
     }
     
     func pageControllerInit(videoGameList: [VideoGame]) {
@@ -147,6 +145,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
 }
 
+
+extension HomeViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+    }
+}
 
 //Notify CollectionData Changes -Delegate
 extension HomeViewController: APINetworkDelegate {

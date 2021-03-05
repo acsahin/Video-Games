@@ -79,14 +79,14 @@
                                     <action selector="searchTextChanged:" destination="5AU-2S-C2Y" eventType="editingChanged" id="gEq-yT-lrJ"/>
                                 </connections>
                             </textField>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="HYf-EC-Sdq">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="QYf-an-JdX">
                                 <rect key="frame" x="0.0" y="95" width="414" height="718"/>
                                 <subviews>
                                     <stackView autoresizesSubviews="NO" opaque="NO" contentMode="scaleAspectFit" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5a2-nW-ud9">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="354.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="318"/>
                                         <subviews>
                                             <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DCh-tJ-450">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="290"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="290.5"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                         <integer key="value" value="20"/>
@@ -97,15 +97,18 @@
                                                     <segue destination="Iao-1p-5fq" kind="embed" id="Vuz-r2-HZQ"/>
                                                 </connections>
                                             </containerView>
-                                            <pageControl contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Ehk-mf-67t">
-                                                <rect key="frame" x="0.0" y="290" width="414" height="64.5"/>
+                                            <pageControl contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Ehk-mf-67t">
+                                                <rect key="frame" x="0.0" y="290.5" width="414" height="27.5"/>
                                                 <color key="tintColor" systemColor="labelColor"/>
                                                 <color key="pageIndicatorTintColor" systemColor="placeholderTextColor"/>
                                             </pageControl>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="318" id="AUA-3A-8zW"/>
+                                        </constraints>
                                     </stackView>
-                                    <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XqU-ix-JeV">
-                                        <rect key="frame" x="0.0" y="363.5" width="414" height="354.5"/>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XqU-ix-JeV">
+                                        <rect key="frame" x="0.0" y="327" width="414" height="391"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mmO-ek-p5A">
                                             <size key="itemSize" width="374" height="110"/>
@@ -121,14 +124,13 @@
                         <viewLayoutGuide key="safeArea" id="isA-J2-C0l"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="HYf-EC-Sdq" firstAttribute="top" secondItem="pA8-CS-Lna" secondAttribute="bottom" constant="7" id="8he-sQ-9fo"/>
-                            <constraint firstItem="pA8-CS-Lna" firstAttribute="top" secondItem="isA-J2-C0l" secondAttribute="top" constant="10" id="9tj-J8-MLY"/>
-                            <constraint firstItem="isA-J2-C0l" firstAttribute="bottom" secondItem="HYf-EC-Sdq" secondAttribute="bottom" id="E6N-KQ-07u"/>
-                            <constraint firstItem="HYf-EC-Sdq" firstAttribute="trailing" secondItem="isA-J2-C0l" secondAttribute="trailing" id="SMV-xc-r4l"/>
-                            <constraint firstItem="pA8-CS-Lna" firstAttribute="leading" secondItem="isA-J2-C0l" secondAttribute="leading" constant="20" id="V0P-N8-hJC"/>
-                            <constraint firstItem="HYf-EC-Sdq" firstAttribute="top" secondItem="pA8-CS-Lna" secondAttribute="bottom" constant="7" id="W3s-oP-QSd"/>
-                            <constraint firstItem="isA-J2-C0l" firstAttribute="trailing" secondItem="pA8-CS-Lna" secondAttribute="trailing" constant="20" id="nxp-ld-7w2"/>
-                            <constraint firstItem="HYf-EC-Sdq" firstAttribute="leading" secondItem="isA-J2-C0l" secondAttribute="leading" id="qxn-xG-bAj"/>
+                            <constraint firstItem="pA8-CS-Lna" firstAttribute="centerX" secondItem="QYf-an-JdX" secondAttribute="centerX" id="40K-jT-i8h"/>
+                            <constraint firstItem="QYf-an-JdX" firstAttribute="top" secondItem="pA8-CS-Lna" secondAttribute="bottom" constant="7" id="7l2-oY-1Ix"/>
+                            <constraint firstItem="pA8-CS-Lna" firstAttribute="leading" secondItem="K0s-fn-EOB" secondAttribute="leadingMargin" id="JWl-1v-4Mq"/>
+                            <constraint firstItem="isA-J2-C0l" firstAttribute="bottom" secondItem="QYf-an-JdX" secondAttribute="bottom" id="Ubp-hI-YHo"/>
+                            <constraint firstItem="QYf-an-JdX" firstAttribute="trailing" secondItem="isA-J2-C0l" secondAttribute="trailing" id="YTH-xB-hOK"/>
+                            <constraint firstItem="pA8-CS-Lna" firstAttribute="top" secondItem="isA-J2-C0l" secondAttribute="top" constant="10" id="msQ-gs-hLR"/>
+                            <constraint firstItem="QYf-an-JdX" firstAttribute="leading" secondItem="isA-J2-C0l" secondAttribute="leading" id="qzy-0e-udx"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="eik-zl-lyT"/>
@@ -137,7 +139,7 @@
                         <outlet property="container" destination="DCh-tJ-450" id="I6u-rh-aJA"/>
                         <outlet property="pageControl" destination="Ehk-mf-67t" id="ir5-P2-7ae"/>
                         <outlet property="searchText" destination="pA8-CS-Lna" id="msJ-hV-oao"/>
-                        <outlet property="stackView" destination="5a2-nW-ud9" id="XJ8-LG-9mT"/>
+                        <outlet property="stackView" destination="5a2-nW-ud9" id="a3u-TD-9JZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lmd-Yy-OPb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
