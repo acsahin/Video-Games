@@ -12,8 +12,6 @@ class FavouritesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .darkGray
-        
         //this loads only first appearence
-        
     }
 }

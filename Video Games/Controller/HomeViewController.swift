@@ -10,37 +10,46 @@ import Kingfisher
 
 class HomeViewController: UIViewController{
     
+    //PageView
     @IBOutlet weak var pageControl: UIPageControl!
-    @IBOutlet weak var container: UIView!
-    @IBOutlet weak var collectionView: UICollectionView!
-    
-    @IBOutlet weak var stackView: UIStackView!
-    @IBOutlet weak var searchText: UITextField!
-    
-    var collectionData = [VideoGame]()
-    
-    let network = APINetwork()
-    
     var pages = [UIViewController]()
     var pageCount: Int = 3
     var pageViewController: UIPageViewController?
     var currentIndex = 0
     var pendingIndex: Int?
+    
+    //CollectionView
+    @IBOutlet weak var collectionView: UICollectionView!
+    var collectionData = [VideoGame]()
+    
+    //This stackview only used for "isHidden" property
+    //to show/hide onSearch
+    @IBOutlet weak var stackView: UIStackView!
+    
+    //Search Text Field
+    @IBOutlet weak var searchText: UITextField!
+
+    //NetworkConnection
+    let network = APINetwork()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        network.delegate = self
         
+        network.delegate = self
         collectionView.dataSource = self
         collectionView.delegate = self
-        
         searchText.delegate = self
+        
+        searchText.clearsOnBeginEditing = false
                 
+        //Init collectionView with custom cell
         self.collectionView.register(UINib.init(nibName: "VideoGameCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "videoGameCell")
         
         pageControl.pageIndicatorTintColor = .darkGray
         pageControl.currentPageIndicatorTintColor = .black
     }
+    
+    
     
     func pageControllerInit(videoGameList: [VideoGame]) {
         for i in 0 ..< pageCount {
@@ -61,17 +70,24 @@ class HomeViewController: UIViewController{
         if let text = sender.text {
             if text.count >= 4 {
                 stackView.isHidden = true
+                collectionView.isHidden = false
                 collectionData = network.baseData.filter{
                     $0.name.lowercased().contains(text)
                 }
                 collectionView.reloadData()
-            }else {
-                container.isHidden = false
-                pageControl.isHidden = false
+                if collectionData.count == 0 {
+                    stackView.isHidden = true
+                    collectionView.isHidden = true
+                    let text = UILabel()
+                    text.frame = CGRect(x: 0, y: 0, width: 100, height: 30)
+                    text.center = self.view.center
+                    text.text = "No item :("
+                    text.textColor = .black
+                    text.tintColor = .black
+                    text.font = UIFont(name: "Halvetica", size: 17)
+                    self.view.addSubview(text)
+                }
             }
-        } else {
-            container.isHidden = false
-            pageControl.isHidden = false
         }
     }
 }
@@ -149,6 +165,15 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 extension HomeViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        stackView.isHidden = false
+        collectionData = Array(network.baseData[self.pageCount..<network.baseData.count])
+        collectionView.reloadData()
+        return true
     }
 }
 
@@ -160,5 +185,9 @@ extension HomeViewController: APINetworkDelegate {
             self.collectionData = Array(videoGames[self.pageCount..<videoGames.count])
             self.collectionView.reloadData()
         }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.resignFirstResponder()
     }
 }

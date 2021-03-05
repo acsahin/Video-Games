@@ -136,7 +136,6 @@
                     <tabBarItem key="tabBarItem" title="Item" id="eik-zl-lyT"/>
                     <connections>
                         <outlet property="collectionView" destination="XqU-ix-JeV" id="toi-6I-T1V"/>
-                        <outlet property="container" destination="DCh-tJ-450" id="I6u-rh-aJA"/>
                         <outlet property="pageControl" destination="Ehk-mf-67t" id="ir5-P2-7ae"/>
                         <outlet property="searchText" destination="pA8-CS-Lna" id="msJ-hV-oao"/>
                         <outlet property="stackView" destination="5a2-nW-ud9" id="a3u-TD-9JZ"/>
