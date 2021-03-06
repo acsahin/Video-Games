@@ -37,9 +37,11 @@ class HomeViewController: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         noItemTextLabel.isHidden = true
         
         network.delegate = self
+        network.fetchData()
         collectionView.dataSource = self
         collectionView.delegate = self
         searchText.delegate = self
@@ -56,7 +58,7 @@ class HomeViewController: UIViewController{
     func pageControllerInit(videoGameList: [VideoGame]) {
         for i in 0 ..< pageCount {
             if let vc = self.storyboard?.instantiateViewController(withIdentifier: "PageContentViewController") as? PageContentViewController {
-                vc.videoGame = videoGameList[i]
+                vc.videoGameImage = videoGameList[i].background_image
                 pages.append(vc)
             }
         }
@@ -199,15 +201,14 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     //On tap collectionView cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //print(collectionData[indexPath.row].name)
         chosenVideoGameSlug = collectionData[indexPath.row].slug
         self.performSegue(withIdentifier: "goToDetailView", sender: self)
     }
-    
+    //Pass data with segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToDetailView" {
             if let detailVC = segue.destination as? DetailsViewController {
-                detailVC.vg = chosenVideoGameSlug
+                detailVC.urlParameter = chosenVideoGameSlug
             }
         }
     }
@@ -223,9 +224,5 @@ extension HomeViewController: APINetworkDelegate {
             self.collectionData = Array(videoGames[self.pageCount..<videoGames.count])
             self.collectionView.reloadData()
         }
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        textField.resignFirstResponder()
     }
 }

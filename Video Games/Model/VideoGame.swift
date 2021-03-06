@@ -19,4 +19,6 @@ struct VideoGame: Decodable {
     let released: String
     let background_image: String
     let rating: Double
+    let description: String?
+    let metacritic: Int?
 }

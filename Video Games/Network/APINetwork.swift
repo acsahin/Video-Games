@@ -10,6 +10,7 @@ import Foundation
 class APINetwork {
     
     var delegate: APINetworkDelegate?
+    var detailDelegate: APIDetailNetworkDelegate?
     
     var baseData = [VideoGame]()
     
@@ -18,15 +19,10 @@ class APINetwork {
         "x-rapidapi-host": "rawg-video-games-database.p.rapidapi.com"
     ]
     
-    let request = NSMutableURLRequest(url: NSURL(string: "https://rawg-video-games-database.p.rapidapi.com/games")! as URL,
-                                      cachePolicy: .useProtocolCachePolicy,
-                                      timeoutInterval: 10.0)
-    
-    init() {
-        fetchData()
-    }
-    
     func fetchData() {
+        let request = NSMutableURLRequest(url: NSURL(string: "https://rawg-video-games-database.p.rapidapi.com/games")! as URL,
+                                          cachePolicy: .useProtocolCachePolicy,
+                                          timeoutInterval: 10.0)
         request.httpMethod = "GET"
         request.allHTTPHeaderFields = headers
         
@@ -48,8 +44,37 @@ class APINetwork {
         })
         dataTask.resume()
     }
+    
+    func fetchGameDetail(slug: String) {
+        let request = NSMutableURLRequest(url: NSURL(string: "https://rawg-video-games-database.p.rapidapi.com/games/\(slug)")! as URL,
+                                          cachePolicy: .useProtocolCachePolicy,
+                                          timeoutInterval: 10.0)
+        request.httpMethod = "GET"
+        request.allHTTPHeaderFields = headers
+        
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+            if error == nil {
+                let decoder = JSONDecoder()
+                if let safeData = data {
+                    do {
+                        let videoGame = try decoder.decode(VideoGame.self, from: safeData)
+                        self.detailDelegate?.didGetDetail(self, videoGame: videoGame)
+                    } catch {
+                        print("Error loading")
+                    }
+                    
+                }
+            }
+        })
+        dataTask.resume()
+    }
 }
 
 protocol APINetworkDelegate {
     func didUpdateVideoGames(_ apiNetwork: APINetwork, videoGames: [VideoGame])
+}
+
+protocol APIDetailNetworkDelegate {
+    func didGetDetail(_ apiNetwork: APINetwork, videoGame: VideoGame)
 }
