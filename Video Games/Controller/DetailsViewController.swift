@@ -26,27 +26,24 @@ class DetailsViewController: UIViewController {
     }
     
     @IBAction func addFavourites(_ sender: UIButton) {
-        if sender.backgroundImage(for: .normal) == UIImage(systemName: "hand.thumbsup.fill") {
-            sender.setBackgroundImage(UIImage(systemName: "hand.thumbsup"), for: .normal)
-        }else {
-            sender.setBackgroundImage(UIImage(systemName: "hand.thumbsup.fill"), for: .normal)
-        }
+        sender.backgroundImage(for: .normal) == UIImage(systemName: "hand.thumbsup.fill") ? sender.setBackgroundImage(UIImage(systemName: "hand.thumbsup"), for: .normal) : sender.setBackgroundImage(UIImage(systemName: "hand.thumbsup.fill"), for: .normal)
     }
 }
 
 extension DetailsViewController: APIDetailNetworkDelegate {
+    
     func didGetDetail(_ apiNetwork: APINetwork, videoGame: VideoGame) {
         DispatchQueue.main.async {
-            
             self.gameName.text = videoGame.name
             self.gameReleaseDate.text = videoGame.released
             self.gameImage.kf.setImage(with: URL(string: videoGame.background_image))
             
             //Beautify description string
-            var makeUpDescription = videoGame.description?.replacingOccurrences(of: "<p>", with: "  ")
-            makeUpDescription = makeUpDescription?.replacingOccurrences(of: "<br />", with: "\n  ")
-            makeUpDescription = makeUpDescription?.replacingOccurrences(of: "</p>", with: "\n  ")
+            var makeUpDescription = videoGame.description?.replacingOccurrences(of: "<p>", with: "")
+            makeUpDescription = makeUpDescription?.replacingOccurrences(of: "<br />", with: "\n")
+            makeUpDescription = makeUpDescription?.replacingOccurrences(of: "</p>", with: "\n")
             self.descriptionText.text = makeUpDescription
+            
             
             //Metacritic point view
             if let point = videoGame.metacritic {
@@ -59,7 +56,6 @@ extension DetailsViewController: APIDetailNetworkDelegate {
                     self.pointView.backgroundColor = .red
                 }
             }
-
         }
     }
 }

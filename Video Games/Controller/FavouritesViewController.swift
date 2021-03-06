@@ -9,9 +9,15 @@ import UIKit
 
 class FavouritesViewController: UIViewController {
     
+    @IBOutlet weak var collectionView: UICollectionView!
+    var collectionData = [Int]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .darkGray
-        //this loads only first appearence
     }
 }
+
+
+//extension FavouritesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+//
+//}

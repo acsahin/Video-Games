@@ -42,11 +42,12 @@ class HomeViewController: UIViewController{
         
         network.delegate = self
         network.fetchData()
+        
         collectionView.dataSource = self
         collectionView.delegate = self
         searchText.delegate = self
         
-        searchText.clearsOnBeginEditing = false
+        //searchText.clearsOnBeginEditing = false
                 
         //Init collectionView with custom cell
         self.collectionView.register(UINib.init(nibName: "VideoGameCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "videoGameCell")
@@ -87,6 +88,10 @@ class HomeViewController: UIViewController{
                 collectionData = network.baseData.filter{
                     $0.name.lowercased().contains(text.lowercased())
                 }
+                
+                //When collectionView's frame changed
+                //It needs an update
+                collectionView.layoutIfNeeded()
                 collectionView.reloadData()
                 
                 //If there is no book,
@@ -102,6 +107,15 @@ class HomeViewController: UIViewController{
                     noItemTextLabel.isHidden = false
                     self.view.addSubview(noItemTextLabel)
                 }
+            }else if text.count == 0 {
+                self.view.willRemoveSubview(noItemTextLabel)
+                sender.text = ""
+                collectionView.isHidden = false
+                noItemTextLabel.isHidden = true
+                stackView.isHidden = false
+                collectionData = Array(network.baseData[self.pageCount..<network.baseData.count])
+                collectionView.layoutIfNeeded()
+                collectionView.reloadData()
             }
         }
     }
@@ -117,10 +131,7 @@ extension HomeViewController: UITextFieldDelegate {
         if let currentText = textField.text {
             if currentText.count < 4 {
                 textField.text = ""
-                noItemTextLabel.isHidden = true
-                stackView.isHidden = false
-                collectionData = Array(network.baseData[self.pageCount..<network.baseData.count])
-                collectionView.reloadData()
+                resetView()
             }
         }
         return true
@@ -130,12 +141,17 @@ extension HomeViewController: UITextFieldDelegate {
     //Show main view
     //If text field is cleared
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        resetView()
+        return true
+    }
+    
+    func resetView() {
         noItemTextLabel.isHidden = true
         stackView.isHidden = false
         collectionView.isHidden = false
         collectionData = Array(network.baseData[self.pageCount..<network.baseData.count])
+        collectionView.layoutIfNeeded()
         collectionView.reloadData()
-        return true
     }
 }
 
@@ -173,7 +189,7 @@ extension HomeViewController: UIPageViewControllerDataSource, UIPageViewControll
 
 
 //Collection View
-extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collectionData.count
     }
@@ -187,17 +203,10 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.ratingLabel.text = String(collectionData[indexPath.row].rating)
         cell.dateLabel.text = collectionData[indexPath.row].released
         
-        cell.backgroundColor = .black
-        cell.layer.cornerRadius = 20
         cell.layer.shadowColor = UIColor.darkGray.cgColor
-        cell.layer.shadowOpacity = 1
-        cell.layer.shadowOffset = CGSize(width: -5, height: -5)
-        cell.layer.shadowRadius = 5
-        cell.layer.masksToBounds = false
-        
+
         return cell
     }
-    
     
     //On tap collectionView cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -212,8 +221,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             }
         }
     }
-    
 }
+
 
 
 //Notify CollectionData Changes -Delegate
