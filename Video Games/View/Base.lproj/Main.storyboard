@@ -58,8 +58,8 @@
         <!--Page View Controller-->
         <scene sceneID="RF0-cQ-t4W">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Q30-0h-5qr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Iao-1p-5fq" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q30-0h-5qr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-33" y="873"/>
         </scene>
@@ -139,6 +139,7 @@
                         <outlet property="pageControl" destination="Ehk-mf-67t" id="ir5-P2-7ae"/>
                         <outlet property="searchText" destination="pA8-CS-Lna" id="msJ-hV-oao"/>
                         <outlet property="stackView" destination="5a2-nW-ud9" id="a3u-TD-9JZ"/>
+                        <segue destination="Sxz-o8-RXo" kind="showDetail" identifier="goToDetailView" id="UFx-CJ-faj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lmd-Yy-OPb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -155,7 +156,6 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Sxz-o8-RXo" kind="showDetail" identifier="goToDetailView" id="8bD-oF-54h"/>
                         <segue destination="5AU-2S-C2Y" kind="relationship" relationship="viewControllers" id="zhd-G3-6ew"/>
                         <segue destination="gjy-qm-Izz" kind="relationship" relationship="viewControllers" id="XQ5-RD-sBS"/>
                     </connections>

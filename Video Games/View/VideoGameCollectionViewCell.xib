@@ -26,6 +26,12 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="7v1-Q9-lw8"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="ZkS-Um-MEd">
                                 <rect key="frame" x="160" y="10" width="224" height="80"/>
@@ -91,6 +97,12 @@
                             <constraint firstAttribute="bottom" secondItem="ZkS-Um-MEd" secondAttribute="bottom" constant="10" id="eTW-cb-7c1"/>
                             <constraint firstItem="CuQ-Cb-aWi" firstAttribute="top" secondItem="7yV-yk-f8W" secondAttribute="top" id="nXr-x2-WnS"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
             </view>

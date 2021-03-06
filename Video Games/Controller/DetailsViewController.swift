@@ -8,11 +8,10 @@
 import UIKit
 
 class DetailsViewController: UIViewController {
-    
-    //var videoGame = VideoGame(slug: "", name: "", released: "", background_image: "", rating: 0.0)
+    var vg = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print(vg)
     }
 }
