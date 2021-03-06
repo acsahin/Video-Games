@@ -12,7 +12,6 @@ class DetailsViewController: UIViewController {
     var urlParameter = ""
     let network = APINetwork()
     
-    @IBOutlet weak var favButton: UIImageView!
     @IBOutlet weak var gameName: UILabel!
     @IBOutlet weak var gameReleaseDate: UILabel!
     @IBOutlet weak var pointView: UIView!
@@ -26,6 +25,13 @@ class DetailsViewController: UIViewController {
         network.fetchGameDetail(slug: self.urlParameter)
     }
     
+    @IBAction func addFavourites(_ sender: UIButton) {
+        if sender.backgroundImage(for: .normal) == UIImage(systemName: "hand.thumbsup.fill") {
+            sender.setBackgroundImage(UIImage(systemName: "hand.thumbsup"), for: .normal)
+        }else {
+            sender.setBackgroundImage(UIImage(systemName: "hand.thumbsup.fill"), for: .normal)
+        }
+    }
 }
 
 extension DetailsViewController: APIDetailNetworkDelegate {

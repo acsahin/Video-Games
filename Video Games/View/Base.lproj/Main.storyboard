@@ -85,14 +85,18 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="dVP-bo-0Ag"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="NNQ-xt-fKE"/>
                             </scrollView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hand.thumbsup" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="hEe-dp-7ut">
-                                <rect key="frame" x="354" y="253" width="40" height="41"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ibm-fa-lX9">
+                                <rect key="frame" x="359" y="259" width="35" height="36"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="3nU-dg-Zzi"/>
-                                    <constraint firstAttribute="height" constant="40" id="5np-jx-9CW"/>
+                                    <constraint firstAttribute="height" constant="35" id="4tp-Ox-W8e"/>
+                                    <constraint firstAttribute="width" constant="35" id="kkd-ys-p1B"/>
                                 </constraints>
-                            </imageView>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" backgroundImage="hand.thumbsup" catalog="system"/>
+                                <connections>
+                                    <action selector="addFavourites:" destination="Sxz-o8-RXo" eventType="touchUpInside" id="8UZ-bw-Bmd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="eTv-3D-oBI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -100,7 +104,6 @@
                             <constraint firstItem="HDj-Xo-ygB" firstAttribute="leading" secondItem="You-Ff-jjc" secondAttribute="leading" id="0If-IG-xJU"/>
                             <constraint firstItem="BbP-uj-obc" firstAttribute="leading" secondItem="4fs-YR-ad4" secondAttribute="leading" constant="10" id="0eF-Ag-Nv8"/>
                             <constraint firstItem="eTv-3D-oBI" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="You-Ff-jjc" secondAttribute="trailing" symbolic="YES" id="18w-ha-PQH"/>
-                            <constraint firstItem="eTv-3D-oBI" firstAttribute="trailing" secondItem="hEe-dp-7ut" secondAttribute="trailing" constant="20" id="6kc-XN-Gde"/>
                             <constraint firstItem="qtq-r5-5m3" firstAttribute="trailing" secondItem="eTv-3D-oBI" secondAttribute="trailing" id="CDg-eJ-wXq"/>
                             <constraint firstItem="qtq-r5-5m3" firstAttribute="leading" secondItem="eTv-3D-oBI" secondAttribute="leading" id="Fcr-eL-sJ2"/>
                             <constraint firstItem="0Kf-Yt-o1N" firstAttribute="leading" secondItem="eTv-3D-oBI" secondAttribute="leading" constant="20" id="Gkg-Qb-oto"/>
@@ -108,19 +111,19 @@
                             <constraint firstAttribute="trailing" secondItem="BbP-uj-obc" secondAttribute="trailing" constant="10" id="LTf-gL-PIP"/>
                             <constraint firstItem="eTv-3D-oBI" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0Kf-Yt-o1N" secondAttribute="trailing" symbolic="YES" id="OXb-Cg-SOf"/>
                             <constraint firstAttribute="bottomMargin" secondItem="BbP-uj-obc" secondAttribute="bottom" id="Q7o-G8-Sne"/>
+                            <constraint firstItem="eTv-3D-oBI" firstAttribute="trailing" secondItem="Ibm-fa-lX9" secondAttribute="trailing" constant="20" id="QZH-Js-yh3"/>
                             <constraint firstItem="eTv-3D-oBI" firstAttribute="bottom" secondItem="HDj-Xo-ygB" secondAttribute="bottom" constant="409" id="aoj-wg-lgh"/>
                             <constraint firstItem="You-Ff-jjc" firstAttribute="top" secondItem="0Kf-Yt-o1N" secondAttribute="bottom" constant="8" symbolic="YES" id="bzM-Iu-rjj"/>
                             <constraint firstItem="BbP-uj-obc" firstAttribute="centerX" secondItem="qtq-r5-5m3" secondAttribute="centerX" id="jBy-bR-h5R"/>
+                            <constraint firstItem="Ibm-fa-lX9" firstAttribute="top" secondItem="eTv-3D-oBI" secondAttribute="top" constant="260" id="nau-ra-wo3"/>
                             <constraint firstItem="You-Ff-jjc" firstAttribute="leading" secondItem="eTv-3D-oBI" secondAttribute="leading" constant="20" id="oNh-nE-FoQ"/>
                             <constraint firstItem="qtq-r5-5m3" firstAttribute="top" secondItem="eTv-3D-oBI" secondAttribute="top" id="vtz-CC-E3z"/>
                             <constraint firstItem="HDj-Xo-ygB" firstAttribute="top" secondItem="You-Ff-jjc" secondAttribute="bottom" constant="8" symbolic="YES" id="xhZ-hW-aeH"/>
                             <constraint firstItem="BbP-uj-obc" firstAttribute="top" secondItem="HDj-Xo-ygB" secondAttribute="bottom" constant="10" id="yMl-Cz-SDd"/>
-                            <constraint firstItem="hEe-dp-7ut" firstAttribute="top" secondItem="eTv-3D-oBI" secondAttribute="top" constant="254" id="zJu-U1-dGC"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="descriptionText" destination="CtV-Xm-iaI" id="LJu-TT-czd"/>
-                        <outlet property="favButton" destination="hEe-dp-7ut" id="tjM-AX-k5U"/>
                         <outlet property="gameImage" destination="qtq-r5-5m3" id="qtt-3k-Y8p"/>
                         <outlet property="gameName" destination="0Kf-Yt-o1N" id="ERK-Sy-96w"/>
                         <outlet property="gameReleaseDate" destination="You-Ff-jjc" id="rCW-HN-Izs"/>
