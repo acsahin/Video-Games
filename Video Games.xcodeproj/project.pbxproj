@@ -25,6 +25,7 @@
 		087964B925EF94E1007751F3 /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087964B825EF94E1007751F3 /* FavouritesViewController.swift */; };
 		087964C425EF9531007751F3 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087964C325EF9531007751F3 /* DetailsViewController.swift */; };
 		08815DC125EFB4D100A8C299 /* PageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08815DC025EFB4D100A8C299 /* PageContentViewController.swift */; };
+		08CE938225F64028007D0A84 /* KeyOfAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CE938125F64028007D0A84 /* KeyOfAPI.swift */; };
 		1BA0631806312D551E95DDC7 /* Pods_Video_Games_Video_GamesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FF7EF22AF400194AAB2385C /* Pods_Video_Games_Video_GamesUITests.framework */; };
 		7194C0EA048F5DEF81DC781A /* Pods_Video_Games.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61D93444DB99992965422A99 /* Pods_Video_Games.framework */; };
 		A876A47A17564560B4C5E09C /* Pods_Video_GamesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E630E5BBE6A3C3C4B8573979 /* Pods_Video_GamesTests.framework */; };
@@ -73,6 +74,7 @@
 		087964B825EF94E1007751F3 /* FavouritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewController.swift; sourceTree = "<group>"; };
 		087964C325EF9531007751F3 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		08815DC025EFB4D100A8C299 /* PageContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageContentViewController.swift; sourceTree = "<group>"; };
+		08CE938125F64028007D0A84 /* KeyOfAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyOfAPI.swift; sourceTree = "<group>"; };
 		3FF7EF22AF400194AAB2385C /* Pods_Video_Games_Video_GamesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Video_Games_Video_GamesUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BA65ED44518AE30CE769779 /* Pods-Video Games-Video GamesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Video Games-Video GamesUITests.debug.xcconfig"; path = "Target Support Files/Pods-Video Games-Video GamesUITests/Pods-Video Games-Video GamesUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		61D93444DB99992965422A99 /* Pods_Video_Games.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Video_Games.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,6 +156,7 @@
 				0879648625EF8F31007751F3 /* Assets.xcassets */,
 				0879648B25EF8F31007751F3 /* Info.plist */,
 				0879648325EF8F2F007751F3 /* Video_Games.xcdatamodeld */,
+				08CE938125F64028007D0A84 /* KeyOfAPI.swift */,
 			);
 			path = "Video Games";
 			sourceTree = "<group>";
@@ -474,6 +477,7 @@
 				087964B125EF94C4007751F3 /* HomeViewController.swift in Sources */,
 				0879647B25EF8F2F007751F3 /* AppDelegate.swift in Sources */,
 				0839886C25F2590700DF072D /* APINetwork.swift in Sources */,
+				08CE938225F64028007D0A84 /* KeyOfAPI.swift in Sources */,
 				0879647D25EF8F2F007751F3 /* SceneDelegate.swift in Sources */,
 				0826FC9125F23A6600753024 /* VideoGame.swift in Sources */,
 				08815DC125EFB4D100A8C299 /* PageContentViewController.swift in Sources */,

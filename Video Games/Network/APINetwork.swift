@@ -15,7 +15,7 @@ class APINetwork {
     var baseData = [VideoGame]()
     
     let headers = [
-        "x-rapidapi-key": "4d9031962fmshbd0f94c9fc9a412p17f8d5jsn3522866d1391",
+        "x-rapidapi-key": keyOfYours,
         "x-rapidapi-host": "rawg-video-games-database.p.rapidapi.com"
     ]
     
