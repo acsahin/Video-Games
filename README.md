@@ -16,7 +16,7 @@
 ---
 
 <p align="center">
-  <img src="https://github.com/ahmetcemalsahin/Video-Games/blob/main/ss/darkHome.png" alt="alt text" width="165" height="350">
+  <img src="https://github.com/ahmetcemalsahin/Video-Games/blob/main/ss/farkHome.png" alt="alt text" width="165" height="350">
   <img src="https://github.com/ahmetcemalsahin/Video-Games/blob/main/ss/darkFav.png" alt="alt text" width="165" height="350">
   <img src="https://github.com/ahmetcemalsahin/Video-Games/blob/main/ss/darkDetail.png" alt="alt text" width="165" height="350">
 </p>
