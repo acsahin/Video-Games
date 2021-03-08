@@ -9,6 +9,8 @@ target 'Video Games' do
 
   pod 'Kingfisher', '~> 6.0'
 
+  pod 'lottie-ios'
+
   target 'Video GamesTests' do
     inherit! :search_paths
     # Pods for testing
