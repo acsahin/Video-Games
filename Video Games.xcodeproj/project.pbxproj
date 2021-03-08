@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0826FC9125F23A6600753024 /* VideoGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0826FC9025F23A6600753024 /* VideoGame.swift */; };
+		082D8BD725F605E700ABE046 /* LocalDBNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D8BD625F605E700ABE046 /* LocalDBNetwork.swift */; };
+		082D8BE625F6097F00ABE046 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 082D8BE425F6097F00ABE046 /* DataModel.xcdatamodeld */; };
 		0839886525F24C0C00DF072D /* VideoGameCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0839886325F24C0C00DF072D /* VideoGameCollectionViewCell.swift */; };
 		0839886625F24C0C00DF072D /* VideoGameCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0839886425F24C0C00DF072D /* VideoGameCollectionViewCell.xib */; };
 		0839886C25F2590700DF072D /* APINetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0839886B25F2590700DF072D /* APINetwork.swift */; };
@@ -48,6 +50,8 @@
 /* Begin PBXFileReference section */
 		05292BA4A0C0384F8D741409 /* Pods-Video Games.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Video Games.debug.xcconfig"; path = "Target Support Files/Pods-Video Games/Pods-Video Games.debug.xcconfig"; sourceTree = "<group>"; };
 		0826FC9025F23A6600753024 /* VideoGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoGame.swift; sourceTree = "<group>"; };
+		082D8BD625F605E700ABE046 /* LocalDBNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDBNetwork.swift; sourceTree = "<group>"; };
+		082D8BE525F6097F00ABE046 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		0839886325F24C0C00DF072D /* VideoGameCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoGameCollectionViewCell.swift; sourceTree = "<group>"; };
 		0839886425F24C0C00DF072D /* VideoGameCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoGameCollectionViewCell.xib; sourceTree = "<group>"; };
 		0839886B25F2590700DF072D /* APINetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APINetwork.swift; sourceTree = "<group>"; };
@@ -111,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				0839886B25F2590700DF072D /* APINetwork.swift */,
+				082D8BD625F605E700ABE046 /* LocalDBNetwork.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -175,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				0826FC9025F23A6600753024 /* VideoGame.swift */,
+				082D8BE425F6097F00ABE046 /* DataModel.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -463,6 +469,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				082D8BD725F605E700ABE046 /* LocalDBNetwork.swift in Sources */,
 				0839886525F24C0C00DF072D /* VideoGameCollectionViewCell.swift in Sources */,
 				087964B125EF94C4007751F3 /* HomeViewController.swift in Sources */,
 				0879647B25EF8F2F007751F3 /* AppDelegate.swift in Sources */,
@@ -471,6 +478,7 @@
 				0826FC9125F23A6600753024 /* VideoGame.swift in Sources */,
 				08815DC125EFB4D100A8C299 /* PageContentViewController.swift in Sources */,
 				087964B925EF94E1007751F3 /* FavouritesViewController.swift in Sources */,
+				082D8BE625F6097F00ABE046 /* DataModel.xcdatamodeld in Sources */,
 				0879648525EF8F2F007751F3 /* Video_Games.xcdatamodeld in Sources */,
 				087964C425EF9531007751F3 /* DetailsViewController.swift in Sources */,
 			);
@@ -807,6 +815,16 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
+		082D8BE425F6097F00ABE046 /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				082D8BE525F6097F00ABE046 /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 082D8BE525F6097F00ABE046 /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
 		0879648325EF8F2F007751F3 /* Video_Games.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (

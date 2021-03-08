@@ -12,16 +12,16 @@ class HomeViewController: UIViewController{
     
     //PageView
     @IBOutlet weak var pageControl: UIPageControl!
-    var pages = [UIViewController]()
-    var pageCount: Int = 3
-    var pageViewController: UIPageViewController?
-    var currentIndex = 0
-    var pendingIndex: Int?
+    private var pages = [UIViewController]()
+    private var pageCount: Int = 3
+    private var pageViewController: UIPageViewController?
+    private var currentIndex = 0
+    private var pendingIndex: Int?
     
     //CollectionView
     @IBOutlet weak var collectionView: UICollectionView!
-    var collectionData = [VideoGame]()
-    var chosenVideoGameSlug = ""
+    private var collectionData = [VideoGame]()
+    private var chosenVideoGameSlug = ""
     
     //This stackview only used for "isHidden" property
     //to show/hide onSearch
@@ -31,9 +31,9 @@ class HomeViewController: UIViewController{
     @IBOutlet weak var searchText: UITextField!
 
     //NetworkConnection
-    let network = APINetwork()
+    private let network = APINetwork()
     
-    let noItemTextLabel = UILabel()
+    private let noItemTextLabel = UILabel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,14 +46,12 @@ class HomeViewController: UIViewController{
         collectionView.dataSource = self
         collectionView.delegate = self
         searchText.delegate = self
-        
-        //searchText.clearsOnBeginEditing = false
-                
+                        
         //Init collectionView with custom cell
         self.collectionView.register(UINib.init(nibName: "VideoGameCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "videoGameCell")
         
         pageControl.pageIndicatorTintColor = .darkGray
-        pageControl.currentPageIndicatorTintColor = .black
+        pageControl.currentPageIndicatorTintColor = .label
     }
     
     func pageControllerInit(videoGameList: [VideoGame]) {
@@ -99,21 +97,27 @@ class HomeViewController: UIViewController{
                 if collectionData.count == 0 {
                     stackView.isHidden = true
                     collectionView.isHidden = true
-                    noItemTextLabel.frame = CGRect(x: 0, y: 0, width: 100, height: 30)
+                    noItemTextLabel.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 30)
                     noItemTextLabel.center = self.view.center
-                    noItemTextLabel.text = "No item :("
-                    noItemTextLabel.textColor = .black
-                    noItemTextLabel.tintColor = .black
+                    noItemTextLabel.text = "Sorry, there is no video game"
+                    noItemTextLabel.textAlignment = .center
+                    noItemTextLabel.textColor = .label
+                    //noItemTextLabel.tintColor = .black
                     noItemTextLabel.isHidden = false
                     self.view.addSubview(noItemTextLabel)
                 }
             }else if text.count == 0 {
                 self.view.willRemoveSubview(noItemTextLabel)
                 sender.text = ""
-                collectionView.isHidden = false
                 noItemTextLabel.isHidden = true
                 stackView.isHidden = false
+                collectionView.isHidden = false
+                
+                collectionData.removeAll()
+                collectionView.reloadData()
                 collectionData = Array(network.baseData[self.pageCount..<network.baseData.count])
+                
+                //Adjust constraints
                 collectionView.layoutIfNeeded()
                 collectionView.reloadData()
             }

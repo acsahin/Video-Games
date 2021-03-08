@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="LocalVideoGame" representedClassName=".LocalVideoGame" syncable="YES" codeGenerationType="class">
+        <attribute name="background_image" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="rating" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="released" attributeType="String"/>
+        <attribute name="slug" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="LocalVideoGame" positionX="-54" positionY="-9" width="128" height="118"/>
+    </elements>
+</model>
