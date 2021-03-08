@@ -25,6 +25,8 @@
 
 
 ## Features
+- MVC & Delegate Design Patterns
+- CoreData % Kingfisher
 - Dark mode compatibility
 - Search for game
 - Fetch data from internet (https://rapidapi.com/accujazz/api/rawg-video-games-database)
