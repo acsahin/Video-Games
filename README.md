@@ -2,6 +2,8 @@
 
 ##### iOS application
 
+<p align='center'><img src="https://github.com/ahmetcemalsahin/Video-Games/blob/main/ss/gamepad.png" width=300/></p>
+
 #####  Light Theme
 ---
 
