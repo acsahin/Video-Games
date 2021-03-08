@@ -1,0 +1,6 @@
+framework module Pods_Video_GamesTests {
+  umbrella header "Pods-Video GamesTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
